@@ -1,0 +1,36 @@
+.composition{
+    position: relative;
+
+    &__photo{
+        width: 50%;//image flexible in percent in responsive design
+        border-radius: 2px;
+        box-shadow: 0 1rem 3rem rgba($color-black, .4);
+        position: absolute; //parent should be relative, needs top, left properties
+        transition: all .2s;
+        z-index: 1;
+        outline-offset: 1rem;// padding in offset inside border
+        margin-bottom: 1rem;
+
+        &--ph1{
+            left: 0;
+            top: -2rem;
+        }
+        &--ph2{
+            right: 2rem;
+            top: 2rem;
+        }
+        &--ph3{
+            left: 20%;
+            top: 12rem;
+        }
+        &:hover{
+            box-shadow: 0 2rem 4rem rgba($color-black, .6);
+            transform: scale(1.1) translateY(.5rem);
+            z-index: 2;//should be higher than parent z-index
+            outline: 1rem solid $color-primary; //like border, but with padding in offset
+        }
+    }
+    &:hover &__photo:not(:hover){//select composition when hovered, not hovered its children
+        transform: scale(.96);
+    }
+}
